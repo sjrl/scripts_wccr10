@@ -41,12 +41,12 @@ def main(rxn_keys,hi_level,low_level,basis,geom,trunc_thresh,
         for rxn_key in rxn_keys:
             rxn_dict = all_rxn_dict[rxn_key]
             psuedo_hi_level.main(rxn_key,rxn_dict,cluster,
-                               high_theory,geom,
-                               read_output)
-            sub_a_convergence.main(rxn_key,rxn_dict,cluster,
-                                 embed_theory,geom,
-                                 trunc_thresh,
+                                 high_theory,geom,
                                  read_output)
+            sub_a_convergence.main(rxn_key,rxn_dict,cluster,
+                                   embed_theory,geom,
+                                   trunc_thresh,
+                                   read_output)
 
     #   2b) Rerun MP2-in-DFT on reaction with even-handed AO truncation
     elif convergence_check_even_handed:
@@ -58,7 +58,7 @@ def main(rxn_keys,hi_level,low_level,basis,geom,trunc_thresh,
 
     # - Once convergence check finished do energy calculations
     #   1) Run CCSD-in-DFT with correct sub A size and even-handed AO
-    #   1a) Check T1 diagnostics
+    #   1a) Check T1 and D1 diagnostics
     #   2) Run CCSD(T)-in-DFT with correct sub A size and even-handed AO
     elif embedding_energy:
         pass
