@@ -55,24 +55,31 @@ rxn10_fragment2_dict = {}
 
 # Fill in dictionaries with reaction specific info
 rxn7_complex_dict['geometry'] = read_xyz('/home/sjlee/projects/wccr10/coordinates/7complex_bp86.xyz')
-rxn7_complex_dict['atom_labels'] = [1,1,1,2,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,4,0,0,0,0,0,0,0,0]
-rxn7_complex_dict['atoms_in_a'] = '[Cu1,C1,N1,N2,N3,N4,C2,C3]'
-rxn7_complex_dict['rxn_a_size'] = 8
-rxn7_complex_dict['core_in_a'] = 16
+rxn7_complex_dict['atom_labels'] = [1,1,1,2,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,4,4,0,0,0,5,0,0,0]
+#rxn7_complex_dict['atoms_in_a'] = '[Cu1,C1,N1,N2,N3,N4,C2,C3]'
+#rxn7_complex_dict['rxn_a_size'] = 8 # Always number of atoms in A in the complex
+#rxn7_complex_dict['core_in_a'] = 16
+rxn7_complex_dict['atoms_in_a'] = '[Cu1,C1,N1,N2,N3,N4,C2,C3,C4,C5]'
+rxn7_complex_dict['rxn_a_size'] = 10 # Always number of atoms in A in the complex
+rxn7_complex_dict['core_in_a'] = 18
 rxn7_complex_dict['charge'] = 1
 
 rxn7_fragment1_dict['geometry'] = read_xyz('/home/sjlee/projects/wccr10/coordinates/7fragment1_bp86.xyz')
 rxn7_fragment1_dict['atom_labels'] = [1,1,1,2,3,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 rxn7_fragment1_dict['atoms_in_a'] = '[Cu1,C1,N1,N2,C2,C3]'
-rxn7_fragment1_dict['rxn_a_size'] = 8
+#rxn7_fragment1_dict['rxn_a_size'] = 8 # Always number of atoms in A in the complex
+rxn7_fragment1_dict['rxn_a_size'] = 10 # Always number of atoms in A in the complex
 rxn7_fragment1_dict['core_in_a'] = 14
 rxn7_fragment1_dict['charge'] = 1
 
 rxn7_fragment2_dict['geometry'] = read_xyz('/home/sjlee/projects/wccr10/coordinates/7fragment2_bp86.xyz')
-rxn7_fragment2_dict['atom_labels'] = [1,2,0,0,0,0,0,0,0,0]
-rxn7_fragment2_dict['atoms_in_a'] = '[N1,N2]'
-rxn7_fragment2_dict['rxn_a_size'] = 8
-rxn7_fragment2_dict['core_in_a'] = 2
+rxn7_fragment2_dict['atom_labels'] = [3,4,4,0,0,0,5,0,0,0]
+#rxn7_fragment2_dict['atoms_in_a'] = '[N3,N4]'
+#rxn7_fragment2_dict['rxn_a_size'] = 8 # Always number of atoms in A in the complex
+#rxn7_fragment2_dict['core_in_a'] = 2
+rxn7_fragment2_dict['atoms_in_a'] = '[N3,N4,C4,C5]'
+rxn7_fragment2_dict['rxn_a_size'] = 10 # Always number of atoms in A in the complex
+rxn7_fragment2_dict['core_in_a'] = 4
 rxn7_fragment2_dict['charge'] = 0
 
 rxn7_dict['7complex'] = rxn7_complex_dict
