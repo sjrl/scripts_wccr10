@@ -9,7 +9,7 @@ import even_handed_ao
 import os
 import argparse
 
-def main(rxn_keys,hi_level,low_level,basis,geom,trunc_thresh,
+def main(rxn_keys,hi_level,low_level,basis,geom,loc_space,trunc_thresh,
          cluster='tachus',
          convergence_check=False,convergence_check_even_handed=False,
          embedding_energy=False,embedding_optimization=False,
@@ -45,6 +45,7 @@ def main(rxn_keys,hi_level,low_level,basis,geom,trunc_thresh,
                                  read_output)
             sub_a_convergence.main(rxn_key,rxn_dict,cluster,
                                    embed_theory,geom,
+                                   loc_space,
                                    trunc_thresh,
                                    read_output)
 
@@ -103,13 +104,14 @@ if __name__ == '__main__':
     hi_level = [x for x in input('Enter high-level of theory: ').split()]
     low_level = [x for x in input('Enter low-level of theory: ').split()]
     basis = [x for x in input('Enter basis set: ').split()]
+    loc_space = input('Enter localization space: ')
     if len(hi_level) == 0 or len(low_level) == 0 or len(basis) == 0:
         raise RuntimeError('Please provide at least one input for high-level, low-level and basis.')
     geom = ['BP86']
     trunc_thresh=[0,1e-1,1e-2,1e-3,1e-4,1e-5]
 
     main(rxn_keys,hi_level,low_level,basis,
-         geom,trunc_thresh,
+         geom,loc_space,trunc_thresh,
          cluster=cluster_type,
          convergence_check=subA_check,convergence_check_even_handed=even_check,
          embedding_energy=energy_calc,embedding_optimization=opt_calc,

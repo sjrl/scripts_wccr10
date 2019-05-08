@@ -8,6 +8,7 @@ import os
 
 def main(rxn_key,rxn_dict,cluster,
          embed_theory,geom,
+         loc_space,
          trunc_thresh,
          read_output):
 
@@ -50,7 +51,8 @@ def main(rxn_key,rxn_dict,cluster,
                 embed_str = high + '_' + low + '_' + bs
                 geom_str = geom[0] + '_geom'
                 rxn_a_size_str = str(mol_dict['rxn_a_size']) + '_atoms'
-                path = os.path.join(base_dir,rxn_key,embed_str,geom_str,rxn_a_size_str)
+                loc_str = 'loc_'+loc_space
+                path = os.path.join(base_dir,rxn_key,embed_str,geom_str,rxn_a_size_str,loc_str)
                 # Create file names
                 molpro_name = '{0}.mol'.format(mol_key)
                 batch_name = '{0}.batch'.format(mol_key)
@@ -90,7 +92,8 @@ def main(rxn_key,rxn_dict,cluster,
                                               embed_num_cpus,batch_mem,molpro_name)
                     # Create the embedding inputs
                     make_molpro_input_embed(mol_dict,path_final,molpro_name,
-                                         basis=bs,
-                                         memory=mol_mem,
-                                         trunc_thresh=trunc,
-                                         low_level=low,hi_level=high)
+                                            basis=bs,
+                                            memory=mol_mem,
+                                            loc_space=loc_space,
+                                            trunc_thresh=trunc,
+                                            low_level=low,hi_level=high)

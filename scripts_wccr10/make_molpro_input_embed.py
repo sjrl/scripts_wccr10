@@ -19,11 +19,12 @@ import os
 import input_utils
 
 def make_molpro_input_embed(mol_info,file_path,file_name,
-                         basis='def2-tzvpp',
-                         eval_force=False,gdirect=True,
-                         memory=2000,orb_thresh='1d-7',neese_index=4,
-                         trunc_thresh=0,trunc_space=False,
-                         low_level='PBE',hi_level='MP2'):
+                            basis='def2-tzvpp',
+                            eval_force=False,gdirect=True,
+                            memory=2000,orb_thresh='1d-7',neese_index=4,
+                            loc_space='occ',
+                            trunc_thresh=0,trunc_space=False,
+                            low_level='PBE',hi_level='MP2'):
 
     # Determine whether or not RPA is being called
     rpa=False
@@ -75,12 +76,15 @@ def make_molpro_input_embed(mol_info,file_path,file_name,
         file1.write('endproc\n\n')
 
         # Write low level calc
-        file1.write('{{df-hf;wf,charge={0};core,0;save,2100.2;start,2100.2}}\n'.format(mol_info['charge']))
+        file1.write('{{df-hf;wf,charge={0};save,2100.2;start,2100.2}}\n'.format(mol_info['charge']))
         file1.write('{{df-rks,{0};save,2101.2;start,2100.2}}\n'.format(low_level))
         file1.write('{{rks,{0};save,2102.2;start,2101.2}}\n\n'.format(low_level))
 
         # Write localization method
-        file1.write('{locali,pipek;core,0}\n')
+        if loc_space == 'occ':
+            file1.write('{locali,pipek;core,0}\n')
+        elif loc_space == 'val':
+            file1.write('{locali,pipek}\n')
 
         # Write embed command
         atoms_in_a = mol_info['atoms_in_a']
