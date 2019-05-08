@@ -2,19 +2,19 @@
 """
 
 
-def readXYZ(xyz_file):
-""" Module read_xyz
+def read_xyz(xyz_file):
+    """ Module read_xyz
 
-    Parameters
-    ----------
-    xyz_file : string
-        Name of the xyz formatted filename (with path specified) to be read.
+        Parameters
+        ----------
+        xyz_file : string
+            Name of the xyz formatted filename (with path specified) to be read.
 
-    Returns
-    -------
-    geom : list
-        XYZ geometry stored in a list with each item specified as [atom_symbol, (x, y, z)]
-"""
+        Returns
+        -------
+        geom : list
+            XYZ geometry stored in a list with each item specified as [atom_symbol, (x, y, z)]
+    """
 
     geom = []
     with open(xyz_file,'r') as file1:
